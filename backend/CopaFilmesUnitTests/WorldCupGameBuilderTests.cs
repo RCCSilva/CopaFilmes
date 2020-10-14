@@ -17,17 +17,17 @@ namespace CopaFilmesUnitTests
         [InlineData(9)]
         public void build_GivenArrayOfMoviesWithLessThanOrGreaterThan8Movies_ThrowException(int size)
         {
-            // Given
+            // Arrange
             var movies = Enumerable.Range(1, size).Select(x => new Movie());
 
-            // Test -- Assert
+            // Act -- Assert
             Assert.Throws<ArgumentException>(() => _worldCupGameBuilder.Build(movies.ToList()));
         }
 
         [Fact]
         public void build_Given8Movies_ReturnCorrectWorldCupGameTree()
         {
-            // Given
+            // Arrange
             var movies = new List<Movie>();
             movies.Add(createMovie("Os Incríveis 2", 8.5m));
             movies.Add(createMovie("Jurassic World: Reino Ameaçado", 6.7m));
@@ -38,7 +38,7 @@ namespace CopaFilmesUnitTests
             movies.Add(createMovie("Han Solo: Uma História Star Wars", 7.2m));
             movies.Add(createMovie("Thor: Ragnarok", 7.9m));
 
-            // Test
+            // Act
             var worldCupGame = _worldCupGameBuilder.Build(movies);
 
             // Assert
