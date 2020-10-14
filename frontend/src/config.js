@@ -1,0 +1,1 @@
+export const baseServiceUrl = 'http://localhost:5000';
