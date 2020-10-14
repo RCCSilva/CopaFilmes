@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using CopaFilmes.Interfaces;
+using CopaFilmes.Services;
+using CopaFilmes.Builders;
 
 namespace CopaFilmes
 {
@@ -36,6 +39,14 @@ namespace CopaFilmes
                         .AllowAnyMethod();
                 });
             });
+
+            // Services
+            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IWorldCupService, WorldCupService>();
+
+            // Builders
+            services.AddScoped<IWorldCupGameBuilder, WorldCupGameBuilder>();
+            services.AddScoped<IWorldCupBuilder, WorldCupBuilder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

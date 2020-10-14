@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using CopaFilmes.Models;
+using CopaFilmes.Interfaces;
 
 namespace CopaFilmes.Services
 {
-    public class MovieService
+    public class MovieService: IMovieService
     {
         private HttpClient client = new HttpClient();
         

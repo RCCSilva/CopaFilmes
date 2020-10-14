@@ -3,7 +3,6 @@ using CopaFilmes.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace CopaFilmesUnitTests
@@ -22,7 +21,7 @@ namespace CopaFilmesUnitTests
             var movies = Enumerable.Range(1, size).Select(x => new Movie());
 
             // Test -- Assert
-            Assert.Throws<ArgumentException>(() => _worldCupGameBuilder.build(movies.ToList()));
+            Assert.Throws<ArgumentException>(() => _worldCupGameBuilder.Build(movies.ToList()));
         }
 
         [Fact]
@@ -40,7 +39,7 @@ namespace CopaFilmesUnitTests
             movies.Add(createMovie("Thor: Ragnarok", 7.9m));
 
             // Test
-            var worldCupGame = _worldCupGameBuilder.build(movies);
+            var worldCupGame = _worldCupGameBuilder.Build(movies);
 
             // Assert
             Assert.Equal("Vingadores: Guerra Infinita", worldCupGame.Game.Winner.Title);

@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CopaFilmes.Interfaces;
 
 namespace CopaFilmes.Builders
 {
-    public class WorldCupGameBuilder
+    public class WorldCupGameBuilder: IWorldCupGameBuilder
     {
-        public WorldCupGame build(List<Movie> movies)
+        public WorldCupGame Build(List<Movie> movies)
         {
             if (movies.Count() != 8)
             {

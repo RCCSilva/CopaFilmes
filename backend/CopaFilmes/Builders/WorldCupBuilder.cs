@@ -1,18 +1,20 @@
 ﻿using CopaFilmes.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CopaFilmes.Interfaces;
 
 namespace CopaFilmes.Builders
 {
-    public class WorldCupBuilder
+    public class WorldCupBuilder: IWorldCupBuilder
     {
-        private WorldCupGameBuilder _worldCupGameBuilder = new WorldCupGameBuilder();
+        private readonly IWorldCupGameBuilder _worldCupGameBuilder;
+
+        public WorldCupBuilder(IWorldCupGameBuilder worldCupGameBuilder) {
+            _worldCupGameBuilder = worldCupGameBuilder;
+        }
+
         public WorldCup Build(List<Movie> movies)
         {
-
-            var worldCupGame = _worldCupGameBuilder.build(movies);
+            var worldCupGame = _worldCupGameBuilder.Build(movies);
 
             return new WorldCup 
             { 

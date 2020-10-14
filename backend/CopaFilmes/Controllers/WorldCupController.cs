@@ -1,12 +1,8 @@
-﻿using CopaFilmes.Builders;
-using CopaFilmes.Domain.Requests;
+﻿using CopaFilmes.Models.Requests;
 using CopaFilmes.Models;
 using CopaFilmes.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CopaFilmes.Interfaces;
 
 namespace CopaFilmes.Controllers
 {
@@ -14,7 +10,11 @@ namespace CopaFilmes.Controllers
     [Route("[controller]")]
     public class WorldCupController: Controller
     {
-        private WorldCupService _worldCupService = new WorldCupService();
+        private readonly IWorldCupService _worldCupService;
+
+        public WorldCupController(IWorldCupService worldCupService) {
+            _worldCupService = worldCupService;
+        }
         
         [HttpPost]
         public WorldCup Post([FromBody] WorldCupRequest worldCupRequest)

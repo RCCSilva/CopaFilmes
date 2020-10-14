@@ -9,7 +9,7 @@ namespace CopaFilmesUnitTests
         [Theory]
         [InlineData(1, 0, true)]
         [InlineData(10, 9.999, true)]
-        [InlineData(-1, -2, true)] // N�o � esperado
+        [InlineData(-1, -2, true)] // Não é esperado
         [InlineData(0, 1, false)]
         [InlineData(9.999, 10, false)]
         [InlineData(-2, -1, false)]

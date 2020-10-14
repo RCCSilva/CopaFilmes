@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CopaFilmes.Models
+﻿namespace CopaFilmes.Models
 {
     public class Game
     {

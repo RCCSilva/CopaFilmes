@@ -1,11 +1,9 @@
-﻿using CopaFilmes.Builders;
-using CopaFilmes.Models;
+﻿using CopaFilmes.Models;
 using CopaFilmes.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using CopaFilmes.Interfaces;
 
 namespace CopaFilmes.Controllers
 {
@@ -13,7 +11,11 @@ namespace CopaFilmes.Controllers
     [Route("[controller]")]
     public class MovieController: Controller
     {
-        private MovieService _movieService = new MovieService();
+        private readonly IMovieService _movieService;
+
+        public MovieController(IMovieService movieService) {
+            _movieService = movieService;
+        }
 
         public async Task<IEnumerable<Movie>> Get()
         {

@@ -1,19 +1,20 @@
 ﻿using CopaFilmes.Builders;
 using CopaFilmes.Models;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+using CopaFilmes.Interfaces;
 
 namespace CopaFilmes.Services
 {
-    public class WorldCupService
+    public class WorldCupService: IWorldCupService
     {
 
-        private MovieService _movieService = new MovieService();
-        private WorldCupBuilder _worldCupBuilder = new WorldCupBuilder();
+        private readonly IMovieService _movieService;
+        private readonly IWorldCupBuilder _worldCupBuilder;
+
+        public WorldCupService(IMovieService movieService, IWorldCupBuilder worldCupBuilder) {
+            _movieService = movieService;
+            _worldCupBuilder = worldCupBuilder;
+        }
 
         public WorldCup Create(List<string> movieIds)
         {
