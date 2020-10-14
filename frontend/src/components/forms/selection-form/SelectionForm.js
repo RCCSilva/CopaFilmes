@@ -69,7 +69,9 @@ const SelectionForm = props => {
 
     const createErrorMessageBox = () => {
         return (
-            <div className={errorMessageStyle}>
+            <div
+                data-testid='error-message' 
+                className={errorMessageStyle}>
                 {errorMessage}
             </div>
         );
@@ -88,6 +90,7 @@ const SelectionForm = props => {
                     <p>{selectedMovies.length} de 8 filmes</p>
                 </div>
                 <button
+                    data-testid='generate-button'
                     onClick={createWorldCupHandler}
                     className={createWorldCupButtonStyle}>
                     GERAR MEU CAMPEONATO

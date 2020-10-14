@@ -25,7 +25,9 @@ const SelectionBox = props => {
         <div
             onClick={clickHandler} 
             className={boxStyle}>
-            <CheckBox selected={selected}/>
+            <div>
+                <CheckBox selected={selected}/>
+            </div>
             <div className={innerBoxStyle}>
                 <p data-testid='title'>{props.title}</p>
                 <p data-testid='year' className={yearStyle}>{props.year}</p>
