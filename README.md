@@ -42,4 +42,8 @@ Os _endpoints_ disponíveis dentro da pasta `Controllers`:
 
 ### 3.2. Frontend
 
-No front, a ideia é seguir o seguinte fluxo: `Views -> Components -> Services`. Uma `View` controla o que será mostrado para o usuário em uma determinada rota. No caso, a rota `/` traz a visualização necessária para selecionar os filmes e a rota `/result` traz o resultado final, desde que o usuário tenha selecionado anteriormente os filmes para a Copa do Mundo. Se não o tiver feito, o usuário é redirecionado para a rota `/`.
+No _frontend_, a ideia é seguir o seguinte fluxo: `Views -> Components -> Services`. Uma `View` controla o que será mostrado para o usuário em uma determinada rota. No caso, a rota `/` (`SelectionView`) traz a visualização necessária para selecionar os filmes e a rota `/result` (`ResultView`) traz o resultado final, desde que o usuário tenha selecionado anteriormente os filmes para a Copa do Mundo. Se não o tiver feito, o usuário é redirecionado para a rota `/` a fim de que selecione os filmes antes de prosseguir para a tela de resultado.
+
+A _view_ `SelectionView` renderiza o componente `SelectionForm` para gerenciar o formulário de seleção de filmes. Cada filme é apresentado dentro do componente `SelectionBox`. `SelectionForm`, para acessar os filmes disponíveis, faz uso da função `getMovies` e, uma vez que o usuário tenha selecionado 8 filmes e clicado no botão para gerar o resultado, utiliza a função `createWorldCup` para chamar o _backend_. O resultado da requisição é salva no componente `App` e é repassado para a `ResultView`.
+
+Por fim, a _view_ `ResultView`, com o resultado retornado pelo _backend_, renderiza o componente `ResultCard` e apresenta os filmes que ficaram em primeiro e segundo lugar para o usuário.
