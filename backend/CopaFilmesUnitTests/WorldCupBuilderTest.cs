@@ -2,7 +2,6 @@ using CopaFilmes.Builders;
 using CopaFilmes.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 using Moq;
 using CopaFilmes.Interfaces;
@@ -23,7 +22,7 @@ namespace CopaFilmesUnitTests
         public void Dispose() {}
 
         [Fact]
-        public void Build() 
+        public void Build_GivenMovies_CallWorldCupGameBuilder() 
         {
             // Arrange
             var worldCupGame = new WorldCupGame();

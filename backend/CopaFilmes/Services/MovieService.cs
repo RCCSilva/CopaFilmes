@@ -10,27 +10,23 @@ namespace CopaFilmes.Services
 {
     public class MovieService: IMovieService
     {
-        private HttpClient client = new HttpClient();
+        private IMovieClient _movieClient;
+
+        public MovieService (IMovieClient movieClient)
+        {
+            _movieClient = movieClient;
+        }
         
         public async Task<List<Movie>> GetAll()
         {
-            List<Movie> movies = null;
-
-            var response = await client.GetAsync("http://copafilmes.azurewebsites.net/api/filmes");
-
-            if (response.IsSuccessStatusCode)
-            {
-                movies = await response.Content.ReadAsAsync<List<Movie>>();
-            }
-
-            return movies;
+            return await _movieClient.GetAll();
         }
 
-        public List<Movie> GetByMovieId(List<string> movieIds)
+        public async Task<List<Movie>> GetByMovieId(List<string> movieIds)
         {
             var movieIdsSet = movieIds.ToHashSet();
 
-            var movies = GetAll().Result;
+            var movies = await GetAll();
 
             return movies.Where(movie => movieIdsSet.Contains(movie.Id)).ToList();
         }

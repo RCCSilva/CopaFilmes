@@ -4,14 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using CopaFilmes.Interfaces;
 using CopaFilmes.Services;
 using CopaFilmes.Builders;
+using CopaFilmes.Clients;
 
 namespace CopaFilmes
 {
@@ -39,6 +38,9 @@ namespace CopaFilmes
                         .AllowAnyMethod();
                 });
             });
+
+            // Http Clients
+            services.AddHttpClient<IMovieClient, MovieClient>();
 
             // Services
             services.AddScoped<IMovieService, MovieService>();

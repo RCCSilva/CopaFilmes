@@ -1,8 +1,8 @@
 ﻿using CopaFilmes.Models.Requests;
 using CopaFilmes.Models;
-using CopaFilmes.Services;
 using Microsoft.AspNetCore.Mvc;
 using CopaFilmes.Interfaces;
+using System.Threading.Tasks;
 
 namespace CopaFilmes.Controllers
 {
@@ -17,9 +17,9 @@ namespace CopaFilmes.Controllers
         }
         
         [HttpPost]
-        public WorldCup Post([FromBody] WorldCupRequest worldCupRequest)
+        public async Task<WorldCup> Post([FromBody] WorldCupRequest worldCupRequest)
         {
-            return _worldCupService.Create(worldCupRequest.Movies);
+            return await _worldCupService.Create(worldCupRequest.Movies);
         }
     }
 }

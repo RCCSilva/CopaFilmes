@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace CopaFilmes.Interfaces
 {
-    public interface IMovieService
+    public interface IMovieClient
     {
         Task<List<Movie>> GetAll();
-        Task<List<Movie>> GetByMovieId(List<string> movieIds);
     }
 }
